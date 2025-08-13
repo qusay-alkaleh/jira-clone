@@ -16,7 +16,7 @@ interface AuthlayoutProps {
 
 const Authlayout = ({ children }: AuthlayoutProps) => {
   const isSignUpPage = usePathname() === "/sign-up";
-  const authButtonText = isSignUpPage ? "Login" : "Sign Up";
+  const authButtonText = isSignUpPage ? "Sign In" : "Sign Up";
   const authLink = isSignUpPage ? "/sign-in" : "/sign-up";
 
   const AUTH_SENTENCE = isSignUpPage

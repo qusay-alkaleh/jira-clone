@@ -12,8 +12,11 @@ import { useForm } from "react-hook-form";
 import { signUpFormSchema, SignUpFormValues } from "../schemas/sign-up-schema";
 import { zodResolver } from "@hookform/resolvers/zod";
 import CustomInput from "@/components/custom/custom-input";
+import { useSignUp } from "../api/use-sign-up";
 
 export const SignUpCard = () => {
+  const { mutate } = useSignUp();
+
   const form = useForm<SignUpFormValues>({
     resolver: zodResolver(signUpFormSchema),
     defaultValues: {
@@ -24,7 +27,7 @@ export const SignUpCard = () => {
   });
 
   const onsubmit = (values: SignUpFormValues) => {
-    console.log("values => ", { values });
+    mutate({ json: values });
   };
 
   return (

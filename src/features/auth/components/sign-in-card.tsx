@@ -7,8 +7,11 @@ import { useForm } from "react-hook-form";
 import { Form } from "@/components/ui/form";
 import CustomInput from "@/components/custom/custom-input";
 import { signInFormSchema, SignInFormValues } from "../schemas/sign-in-schema";
+import { useSignIn } from "../api/use-sign-in";
 
 export const SignInCard = () => {
+  const { mutate } = useSignIn();
+
   const form = useForm<SignInFormValues>({
     resolver: zodResolver(signInFormSchema),
     defaultValues: {
@@ -18,7 +21,7 @@ export const SignInCard = () => {
   });
 
   const onSubmit = (values: SignInFormValues) => {
-    console.log("values => ", { values });
+    mutate({ json: values });
   };
 
   return (
