@@ -15,3 +15,7 @@ export type SignUpResponse = InferResponseType<
 export type SignUpRequest = InferRequestType<
   (typeof client.api.auth)["sign-up"]["$post"]
 >;
+
+export type SignOutResponse = InferResponseType<
+  (typeof client.api.auth)["sign-out"]["$post"]
+>;
